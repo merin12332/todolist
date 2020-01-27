@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "id": 2,
-      "text": "Mrning",
-      "completed": true
-    },
-    {
       "id": "3",
       "text": "carrot",
       "completed": "false"

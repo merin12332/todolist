@@ -1,64 +1,67 @@
 var todosBak = [];
-jQuery(document).ready(function () {
+jQuery(document).ready(function() {
     getTodos();
 
-    jQuery("#addTask").click(function () {        //addTask button is available by default whenever the document is ready--static html tags
+    jQuery("#addTask").click(function() { //addTask button is available by default whenever the document is ready--static html tags
         onAddTaskClick()
     })
-    jQuery(document).on('click', '.edit', function () {   //edit button is created dynamically
+    jQuery(document).on('click', '.edit', function() { //edit button is created dynamically
         onClickEdit(this);
         // console.log("Clicked on edit icon!");
 
     })
-    jQuery(document).on('click', '.delete', function (event) {
+    jQuery(document).on('click', '.delete', function(event) {
         event.preventDefault();
         event.stopPropagation();
         // onClickDelete();
         console.log("Clicked on delete icon!");
-        var id = jQuery(this).closest('tr').find('td:eq(0)').text();
+        // var id = jQuery(this).closest('tr').find('td:eq(0)').text(); // old code, where s.no is marked with id
+        var id = jQuery(this).closest('tr').attr('data-id'); // new code, where s.no is marked with index
         var task = jQuery(this).closest('tr').find('td:eq(1)').text();
-        var verify=confirm("Are you sure you want to delete the task? "+task);
-        if(verify){
+        var verify = confirm("Are you sure you want to delete the task? " + task);
+        if (verify) {
             jQuery.ajax({
                 url: 'http://localhost:3000/todos/' + id,
                 method: 'DELETE',
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                     // resetForm();
                     // getTodos();
                 },
-                error: function (err) {
-    
+                error: function(err) {
+
                 }
             })
         }
-        console.log(id);
-
 
     })
 
 });
+
 function onClickEdit(element) {
-    var id = jQuery(element).closest('tr').find('td:eq(0)').text();
+    // var id = jQuery(element).closest('tr').find('td:eq(0)').text(); // old code, where s.no is marked with id
+    var id = jQuery(element).closest('tr').attr('data-id'); // new code, where s.no is marked with index
     var task = jQuery(element).closest('tr').find('td:eq(1)').text();
-    jQuery("#enterTask").val(task);
+    jQuery("#enterTask").val(_.trim(task));
     jQuery("#enterTask").closest('.input-field').find('label').addClass('active');
     jQuery("#taskId").val(id);
     console.log(id);
 }
+
 function getTodos() {
     jQuery.ajax({
         url: 'http://localhost:3000/todos',
-        success: function (response) {
+        success: function(response) {
             renderTodos(response);
 
         },
-        error: function (err) {
+        error: function(err) {
 
         }
 
     })
 }
+
 function renderTodos(todos) {
     console.log("Todos", todos)
     todosBak = todos;
@@ -82,10 +85,11 @@ function renderTodos(todos) {
 
 
     //Lodash
-    const template=_.template(jQuery("#todoRowTemplate").html());
-    const compiled=template({todos:todos});
+    const template = _.template(jQuery("#todoRowTemplate").html());
+    const compiled = template({ todos: todos });
     jQuery("#todoTable tbody").html(compiled);
 }
+
 function onAddTaskClick() {
     var task = jQuery("#enterTask").val();
     console.log("The task is ", task)
@@ -116,6 +120,7 @@ function onAddTaskClick() {
     //     })
     // }
 }
+
 function validTask(task) {
     if (!task) {
         jQuery(".no-text").text("*This field is mandatory!");
@@ -131,6 +136,7 @@ function validTask(task) {
     }
     return true;
 }
+
 function saveTask(task) {
     if (jQuery("#taskId").val()) {
         //update the task
@@ -142,11 +148,11 @@ function saveTask(task) {
                 text: task,
                 completed: false
             },
-            success: function (response) {
+            success: function(response) {
                 // resetForm();
                 // getTodos();
             },
-            error: function (err) {
+            error: function(err) {
                 console.log(err);
             }
         })
@@ -160,17 +166,18 @@ function saveTask(task) {
             text: task,
             completed: false
         },
-        success: function (response) {
+        success: function(response) {
             resetForm();
             getTodos();
         },
-        error: function (err) {
+        error: function(err) {
 
         }
     })
 }
+
 function resetForm() {
-    jQuery("#enterTask").val('');    //fetches val
+    jQuery("#enterTask").val(''); //fetches val
     jQuery("#taskId").val('');
     jQuery(".no-text").text('');
 }

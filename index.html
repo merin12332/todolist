@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-do List</title>
-    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"
-        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -43,10 +42,10 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         <tr>
                             <td>0</td>
-                            <td >Hello World</td>
+                            <td>Hello World</td>
                             <td></td>
                         </tr>
                     </tbody>
@@ -56,15 +55,19 @@
     </div>
     <script id="todoRowTemplate" type="text/html">
         <% _.forEach(todos, function(todo, index){ %>
-            <tr>
-                <td><%= (index+1) %></td>
-                <td ><%= todo.text %></td>
-                <td><button class="btn-floating btn-small waves-effect waves-light yellow edit" type="button"><i class="material-icons">edit</i></button>  
+            <tr data-id="<%= todo.id %>">
+                <td>
+                    <%= (index+1) %>
+                </td>
+                <td>
+                    <%= todo.text %>
+                </td>
+                <td><button class="btn-floating btn-small waves-effect waves-light yellow edit" type="button"><i class="material-icons">edit</i></button>
                     <button class="btn-floating btn-small waves-effect waves-light red delete" type="button"><i class="material-icons">clear</i></button></td>
-            
+
             </tr>
-        <% }) %>
-        
+            <% }) %>
+
     </script>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
