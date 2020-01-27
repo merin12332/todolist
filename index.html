@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-do List</title>
+    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"
+        media="screen,projection" />
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container ">
+        <div class="row">
+            <div class="col l6 offset-l3">
+                <h1 class="center">My To-do List</h1>
+                <div class="row">
+                    <input type="hidden" id="taskId">
+                    <div class="input-field col l11">
+                        <input id="enterTask" type="text" class="validate">
+                        <label for="enterTask">Enter a task</label>
+                    </div>
+                    <div class="input-field col l1">
+
+                        <a class="waves-effect waves-light btn" id="addTask">ADD</a>
+                    </div>
+                    <div class="no-text red-text col l12"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col l12">
+                <table id="todoTable">
+                    <thead>
+                        <tr>
+                            <th>SNO</th>
+                            <th>Task</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr>
+                            <td>0</td>
+                            <td >Hello World</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script id="todoRowTemplate" type="text/html">
+        <% _.forEach(todos, function(todo, index){ %>
+            <tr>
+                <td><%= (index+1) %></td>
+                <td ><%= todo.text %></td>
+                <td><button class="btn-floating btn-small waves-effect waves-light yellow edit" type="button"><i class="material-icons">edit</i></button>  
+                    <button class="btn-floating btn-small waves-effect waves-light red delete" type="button"><i class="material-icons">clear</i></button></td>
+            
+            </tr>
+        <% }) %>
+        
+    </script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

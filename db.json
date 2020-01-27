@@ -1,0 +1,71 @@
+{
+  "todos": [
+    {
+      "id": 2,
+      "text": "Mrning",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "text": "carrot",
+      "completed": "false"
+    },
+    {
+      "id": "4",
+      "text": "pling",
+      "completed": "false"
+    },
+    {
+      "id": "5",
+      "text": "kling",
+      "completed": "false"
+    },
+    {
+      "id": "6",
+      "text": "bbq",
+      "completed": "false"
+    },
+    {
+      "id": "7",
+      "text": "onion",
+      "completed": "false"
+    },
+    {
+      "id": "8",
+      "text": "gfhfh",
+      "completed": "false"
+    },
+    {
+      "id": "9",
+      "text": "ginger",
+      "completed": "false"
+    },
+    {
+      "id": "10",
+      "text": "house",
+      "completed": "false"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "json-server",
+      "author": "typicodewww"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

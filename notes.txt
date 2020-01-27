@@ -1,0 +1,36 @@
+task: to create a html to-do list
+components used: materialize css,jquery
+1. create an input box with add button next to it--- complted
+2. click of the button
+    2a. validate the input- input shall not be empty/input shall not be less than 2 characters and greater than 6 characters
+   // 2b. make an ajax call to localhost:3000 and save the data
+3. get todos from json server(http://localhost:3000/todos) ----completed
+4. populate todos in a table structure- run loop using for or for each --- completed
+5. if task is completed, strike through the text using css
+6. have a delete button on right hand side, on click 
+    6a. delete that todo item 
+7. have a update button, on click:
+    7a. set the todo text on the input box 
+    7b. on click of button, save the todo text
+
+    there are 4 methods frequently used:
+    1. get --- fetches all records
+    2. get/{id} --- fetches one record matching the id
+    3. post --- creates a new record
+    4. put --- updates all records
+    5. put/{id} --- updates one record matching the id
+    6. delete ---- delets all records
+    7. delete/{id} --- deletes one record matching the id
+
+    REST API
+
+    Wrap the pencil icon and give a class(say edit);
+
+    jQuery(document).on('click', '.edit', function(){
+        jQuery(this).
+        //closest tr - jquery function - get the parent
+        // find td - jquery function - get the children of the elemnt
+        // index -0 for id and 1 for text
+        //save id in input hidden
+        //save value in entertask
+    })
